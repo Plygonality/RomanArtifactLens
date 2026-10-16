@@ -7,6 +7,8 @@ __pycache__/
 build/
 dist/
 *.egg-info/
-reports/
+# Generated analysis output at the repository root only. A bare `reports/`
+# pattern also ignores the package at src/romanartifactlens/reports/.
+/reports/
 *.asdf
 .DS_Store
