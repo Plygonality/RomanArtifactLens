@@ -1,0 +1,5 @@
+candidate_id,x,y,ra_deg,dec_deg,overall_review_status,central_flags,do_not_use_fraction,background,background_status,significance,significance_status,isolated_pixel_heuristic,href
+clean-01,40.0,64.0,10.0007641387,-19.9999847206,NO_FLAGGED_CONCERNS_IN_AVAILABLE_CHECKS,,0.0,10.016925811767578,MEASURED,187.7917786271605,MEASURED,False,candidates/clean-01/review.html
+jump-01,96.0,40.0,9.9989432075,-20.0007180524,REVIEW_RECOMMENDED,JUMP_DET,0.0,9.991944789886475,MEASURED,100.78692107220111,MEASURED,False,candidates/jump-01/review.html
+edge-01,1.0,96.0,10.0020322711,-19.9990069329,REVIEW_RECOMMENDED,DO_NOT_USE,0.15234375,10.007894515991211,MEASURED,112.30777811545464,MEASURED,False,candidates/edge-01/review.html
+spike-01,80.0,100.0,9.9994634808,-19.9988847214,REVIEW_RECOMMENDED,,0.0,10.0,MEASURED,499.9999925494195,MEASURED,True,candidates/spike-01/review.html

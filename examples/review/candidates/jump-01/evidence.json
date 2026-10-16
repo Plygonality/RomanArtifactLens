@@ -1,0 +1,386 @@
+{
+  "analysis_settings": {
+    "annulus_inner_px": null,
+    "annulus_inner_px_effective": 12.0,
+    "annulus_outer_px": null,
+    "annulus_outer_px_effective": 24.0,
+    "aperture_radius_px": 12.0,
+    "background": "sigma_clip_median",
+    "background_sigma": 3.0,
+    "coordinate_tolerance_arcsec": 0.05,
+    "dq_policy": "exclude_do_not_use",
+    "min_background_pixels": 30,
+    "morphology_nsigma": 5.0,
+    "psf_adapter": "none",
+    "psf_sigma_px": null,
+    "strict": false
+  },
+  "candidate_id": "jump-01",
+  "catalogue_metadata": {
+    "catalogue_row": 1,
+    "fixture_label": "jump_flag_overlap",
+    "metadata_note": "Non-coordinate catalogue columns are metadata. An anomaly_score column is retained as an external within-image ranking. It is not used as a significance or as an artefact probability. The live NGRST-Discovery-Toolkit schema was not readable from this environment, so this alias list is unverified against that repository."
+  },
+  "cutout": {
+    "n_coverage": 625,
+    "origin_xy": [
+      84,
+      28
+    ],
+    "padded_with_nan": false,
+    "radius_px": 12.0,
+    "shape": [
+      25,
+      25
+    ]
+  },
+  "dataset_kind": "SYNTHETIC_TEST",
+  "dataset_level": "SYNTHETIC",
+  "dq_summary": {
+    "annulus": {
+      "any_flag_count": 0,
+      "do_not_use_count": 0,
+      "do_not_use_fraction": 0.0,
+      "flag_counts": {},
+      "flag_fractions": {},
+      "n_pixels": 1352,
+      "raw_max": 0,
+      "raw_min": 0,
+      "unknown_bit_counts": {}
+    },
+    "aperture": {
+      "any_flag_count": 13,
+      "do_not_use_count": 0,
+      "do_not_use_fraction": 0.0,
+      "flag_counts": {
+        "JUMP_DET": 13
+      },
+      "flag_fractions": {
+        "JUMP_DET": 0.02947845804988662
+      },
+      "n_pixels": 441,
+      "raw_max": 4,
+      "raw_min": 0,
+      "unknown_bit_counts": {}
+    },
+    "available": true,
+    "central": {
+      "components": [
+        {
+          "bit": 2,
+          "name": "JUMP_DET",
+          "policy": "EXPOSURE_CONDITION",
+          "value": 4
+        }
+      ],
+      "flags": [
+        "JUMP_DET"
+      ],
+      "raw": 4,
+      "unknown_bits": []
+    }
+  },
+  "evidence": [
+    {
+      "code": "RAL-DQ-001",
+      "confidence_class": "DIRECT",
+      "context": {},
+      "description": "A per-pixel DQ array was read and decoded with bitwise tests.",
+      "interpretation": "Flag names come from the dictionary recorded in the manifest. A clear pixel is not evidence of astrophysical reality.",
+      "kind": "OBSERVED_FLAG",
+      "source_field": "dq",
+      "status": "PRESENT",
+      "threshold_or_policy": "bitwise AND against the flag dictionary",
+      "value": 16384
+    },
+    {
+      "code": "RAL-DQ-010",
+      "confidence_class": "DIRECT",
+      "context": {
+        "components": [
+          {
+            "bit": 2,
+            "name": "JUMP_DET",
+            "policy": "EXPOSURE_CONDITION",
+            "value": 4
+          }
+        ]
+      },
+      "description": "Central pixel DQ decomposes to JUMP_DET",
+      "interpretation": "Every set bit is listed. Combined flags are not collapsed to one integer label.",
+      "kind": "OBSERVED_FLAG",
+      "source_field": "dq[central]",
+      "status": "PRESENT",
+      "threshold_or_policy": "bitwise decomposition",
+      "value": 4
+    },
+    {
+      "code": "RAL-DQ-020",
+      "confidence_class": "DIRECT",
+      "context": {
+        "count": 0,
+        "n_pixels": 441
+      },
+      "description": "DO_NOT_USE fraction inside the aperture.",
+      "interpretation": "Pixels with DO_NOT_USE are left out of the default statistics, including when other bits are set. The fraction is not an artefact probability.",
+      "kind": "OBSERVED_FLAG",
+      "source_field": "dq aperture",
+      "status": "ABSENT",
+      "threshold_or_policy": "exclude DO_NOT_USE from statistics when policy is exclude_do_not_use",
+      "value": 0.0
+    },
+    {
+      "code": "RAL-DQ-031",
+      "confidence_class": "DIRECT",
+      "context": {
+        "count": 13,
+        "flag": "JUMP_DET",
+        "n_pixels": 441,
+        "policy": "EXPOSURE_CONDITION"
+      },
+      "description": "Candidate aperture overlaps pixels flagged JUMP_DET.",
+      "interpretation": "Ramp fitting recorded a jump. Jumps are associated with cosmic-ray hits and with other discontinuities. A jump flag does not prove that this candidate is a cosmic ray.",
+      "kind": "OBSERVED_FLAG",
+      "source_field": "dq aperture",
+      "status": "PRESENT",
+      "threshold_or_policy": "fraction of on-image aperture pixel centers",
+      "value": 0.02947845804988662
+    },
+    {
+      "code": "RAL-DQ-040",
+      "confidence_class": "DIRECT",
+      "context": {},
+      "description": "No unknown DQ bits were set in the aperture.",
+      "interpretation": "This check uses the dictionary provenance in the manifest. It does not add names for reserved bits.",
+      "kind": "OBSERVED_FLAG",
+      "source_field": "dq aperture",
+      "status": "ABSENT",
+      "threshold_or_policy": "unknown bits remain visible",
+      "value": {}
+    },
+    {
+      "code": "RAL-DQ-012",
+      "confidence_class": "DIRECT",
+      "context": {},
+      "description": "Annulus flag counts: none",
+      "interpretation": "Annulus flags inform the background mask. They are not by themselves a claim about the candidate's origin.",
+      "kind": "OBSERVED_FLAG",
+      "source_field": "dq annulus",
+      "status": "ABSENT",
+      "threshold_or_policy": "exclude_do_not_use",
+      "value": {}
+    },
+    {
+      "code": "RAL-PIX-001",
+      "confidence_class": "DIRECT",
+      "context": {},
+      "description": "0 aperture pixels have non-finite science values.",
+      "interpretation": "Non-finite samples are excluded from statistics and are not replaced with zeros.",
+      "kind": "DERIVED_METRIC",
+      "source_field": "science aperture",
+      "status": "ABSENT",
+      "threshold_or_policy": "finite science required",
+      "value": 0
+    },
+    {
+      "code": "RAL-PIX-002",
+      "confidence_class": "DIRECT",
+      "context": {
+        "edge_distance_px": 31.0,
+        "n_off_image": 0,
+        "n_on_image": 441
+      },
+      "description": "Aperture coverage relative to the image boundary.",
+      "interpretation": "Off-image pixel centers are counted in n_off_image and omitted from fractions. They are not treated as good pixels.",
+      "kind": "DERIVED_METRIC",
+      "source_field": "aperture geometry",
+      "status": "ABSENT",
+      "threshold_or_policy": "pixel centers inside the radius",
+      "value": 0.0
+    },
+    {
+      "code": "RAL-PIX-003",
+      "confidence_class": "DIRECT",
+      "context": {
+        "reason": "QUOTED_UNDER_STATED_ASSUMPTION"
+      },
+      "description": "Uncertainty check: QUOTED_UNDER_STATED_ASSUMPTION.",
+      "interpretation": "Ratio of central excess to the supplied error under uncertainty_model=synthetic_gaussian_sigma. This is not a Roman calibrated variance and not an artefact probability.",
+      "kind": "DERIVED_METRIC",
+      "source_field": "err",
+      "status": "MEASURED",
+      "threshold_or_policy": "finite, positive, and not inconsistent with a complete variance budget",
+      "value": 0.800000011920929
+    },
+    {
+      "code": "RAL-PIX-010",
+      "confidence_class": "DIRECT",
+      "context": {
+        "n_used": 1346,
+        "n_valid": 1352,
+        "scale": 0.7435240922927856
+      },
+      "description": "Local annulus background.",
+      "interpretation": "The sky estimate uses unmasked annulus pixels only. It is not a source flux.",
+      "kind": "DERIVED_METRIC",
+      "source_field": "science annulus",
+      "status": "MEASURED",
+      "threshold_or_policy": "at least 30 valid pixels; estimator sigma_clip_median",
+      "value": 9.991944789886475
+    },
+    {
+      "code": "RAL-PIX-012",
+      "confidence_class": "DIRECT",
+      "context": {
+        "method": "central_excess_over_supplied_err"
+      },
+      "description": "Central excess divided by the supplied central error.",
+      "interpretation": "Ratio of central excess to the supplied error under uncertainty_model=synthetic_gaussian_sigma. This is not a Roman calibrated variance and not an artefact probability.",
+      "kind": "DERIVED_METRIC",
+      "source_field": "science and err at central pixel",
+      "status": "MEASURED",
+      "threshold_or_policy": "quoted only with a finite positive error and a measured background",
+      "value": 100.78692107220111
+    },
+    {
+      "code": "RAL-MORPH-001",
+      "confidence_class": "DIRECT",
+      "context": {
+        "axis_ratio": 0.9674305791465249,
+        "central_concentration": 0.06482945417236209,
+        "ellipticity": 0.03256942085347525,
+        "method": "photutils.segmentation.detect_sources",
+        "orientation_rad": -0.9917211508068402,
+        "reason": "CENTRAL_SEGMENT"
+      },
+      "description": "Local segmentation shape summary.",
+      "interpretation": "Area, axis ratio, and concentration describe the pixels above threshold. They do not establish an instrumental or astrophysical origin.",
+      "kind": "DERIVED_METRIC",
+      "source_field": "science cutout",
+      "status": "MEASURED",
+      "threshold_or_policy": "threshold = background + 5.0 * robust scale",
+      "value": 44.0
+    },
+    {
+      "code": "RAL-MORPH-010",
+      "confidence_class": "HEURISTIC",
+      "context": {},
+      "description": "The isolated-pixel heuristic did not trigger.",
+      "interpretation": "Absence of this heuristic is not a cosmic-ray rejection and not a confirmation of a real source.",
+      "kind": "HEURISTIC_WARNING",
+      "source_field": "segmentation area",
+      "status": "ABSENT",
+      "threshold_or_policy": "single-pixel dominance",
+      "value": 44.0
+    },
+    {
+      "code": "RAL-PSF-020",
+      "confidence_class": "NOT_APPLICABLE",
+      "context": {
+        "amplitude": null,
+        "dx_px": null,
+        "dy_px": null,
+        "model_name": null,
+        "reason": "MISSING_REFERENCE_PSF",
+        "roman_calibrated": false,
+        "sigma_px": null
+      },
+      "description": "PSF comparison was not requested.",
+      "interpretation": "No reference PSF was applied. A missing PSF comparison does not mean the candidate matches a Roman PSF.",
+      "kind": "NOT_EVALUATED",
+      "source_field": "psf adapter none",
+      "status": "MISSING_REFERENCE_PSF",
+      "threshold_or_policy": "reference model required; Gaussian toy is not a Roman PSF",
+      "value": null
+    },
+    {
+      "code": "RAL-PIX-004",
+      "confidence_class": "DIRECT",
+      "context": {},
+      "description": "Count of aperture pixels accepted by the DQ and finite-value policy.",
+      "interpretation": "This count is the sample available for local statistics after the stated mask.",
+      "kind": "DERIVED_METRIC",
+      "source_field": "policy mask",
+      "status": "MEASURED",
+      "threshold_or_policy": "exclude_do_not_use",
+      "value": 441
+    }
+  ],
+  "figures": {
+    "cutout_display_dq": "cutout_display_dq.png",
+    "cutout_science": "cutout_science.png",
+    "cutout_science_csv": "cutout_science.csv",
+    "cutout_science_npy": "cutout_science.npy",
+    "cutout_uncertainty": "cutout_uncertainty.png"
+  },
+  "limitations": [
+    "RomanArtifactLens is a diagnostic assistant. It does not classify candidates as alien, novel, extragalactic, cosmic-ray, instrumental, or not real.",
+    "Multi-exposure persistence, filter-to-filter, and transient comparisons are NOT_EVALUATED in v0.1. Raw detector indices are not treated as co-registered.",
+    "L3 context-to-L2 contributor inspection is NOT_EVALUATED unless a later version is given both the context map and the L2 products.",
+    "SYNTHETIC_TEST: this image was generated inside RomanArtifactLens. It is not a Roman-calibrated exposure and it does not use a Roman observation identifier.",
+    "PSF comparison: NOT_EVALUATED. No Roman PSF residual is shown."
+  ],
+  "measurements": {
+    "background": {
+      "method": "sigma_clip_median",
+      "min_pixels": 30,
+      "n_used": 1346,
+      "n_valid": 1352,
+      "scale": 0.7435240922927856,
+      "status": "MEASURED",
+      "value": 9.991944789886475
+    },
+    "morphology": {
+      "area_px": 44.0,
+      "axis_ratio": 0.9674305791465249,
+      "central_concentration": 0.06482945417236209,
+      "eccentricity": 0.25313647412457096,
+      "ellipticity": 0.03256942085347525,
+      "elongation": 1.0336658997095256,
+      "isolated_pixel": false,
+      "method": "photutils.segmentation.detect_sources",
+      "n_pixels_above_threshold": 44,
+      "orientation_rad": -0.9917211508068402,
+      "reason": "CENTRAL_SEGMENT",
+      "status": "MEASURED"
+    },
+    "n_annulus_pixels_on_image": 1352,
+    "n_annulus_valid_for_stats": 1352,
+    "n_aperture_pixels_off_image": 0,
+    "n_aperture_pixels_on_image": 441,
+    "n_aperture_valid_for_stats": 441,
+    "uncertainty": {
+      "assumption": "Ratio of central excess to the supplied error under uncertainty_model=synthetic_gaussian_sigma. This is not a Roman calibrated variance and not an artefact probability.",
+      "central_err": 0.800000011920929,
+      "central_science": 90.6214828491211,
+      "inconsistent": false,
+      "method": "central_excess_over_supplied_err",
+      "reason": "QUOTED_UNDER_STATED_ASSUMPTION",
+      "significance": 100.78692107220111,
+      "status": "MEASURED",
+      "unexpectedly_small": false
+    }
+  },
+  "not_concluded": [
+    "This packet does not establish that the candidate is astrophysically real.",
+    "This packet does not establish that the candidate is an instrumental artefact.",
+    "A DQ flag records a pipeline or reference-file condition, not a complete physical origin."
+  ],
+  "overall_review_status": "REVIEW_RECOMMENDED",
+  "position": {
+    "central_pixel": {
+      "x": 96,
+      "y": 40
+    },
+    "coordinate_convention": "0-based pixel centers; x is the column index and y is the row index; science[y, x] is the central sample when x and y are integers. NumPy round-half-to-even selects the central pixel.",
+    "dec_deg": -20.0007180524,
+    "edge_distance_px": 31.0,
+    "on_image": true,
+    "ra_deg": 9.9989432075,
+    "x": 96.0,
+    "y": 40.0
+  },
+  "schema_version": "1.0.0",
+  "units": "synthetic_counts",
+  "units_note": "Units come from the synthetic file. They are not Roman-calibrated units."
+}

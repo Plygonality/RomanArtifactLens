@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "romanartifactlens"
+version = "0.1.0"
+description = "Candidate-level artefact evidence inspector for Roman WFI images"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Plygonality" }]
+keywords = ["astronomy", "roman", "wfi", "data-quality"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Astronomy",
+]
+dependencies = [
+  "numpy>=1.26",
+  "scipy>=1.11",
+  "astropy>=6.0",
+  "matplotlib>=3.8",
+  "photutils>=1.12",
+]
+
+[project.optional-dependencies]
+roman = [
+  "roman_datamodels>=1.2.0,<1.3",
+  "asdf>=4",
+  "gwcs>=0.21",
+]
+psf = ["stpsf>=2.0"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+romanartifactlens = "romanartifactlens.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Plygonality/RomanArtifactLens"
+Documentation = "https://github.com/Plygonality/RomanArtifactLens/tree/main/docs"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+romanartifactlens = ["py.typed"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+markers = [
+  "roman_sample: optional tutorial L2 file (not run in basic CI)",
+]
