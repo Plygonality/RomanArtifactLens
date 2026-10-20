@@ -1,0 +1,5 @@
+candidate_id,x,y,ra,dec,fixture_label
+clean-01,40.0,64.0,10.0007641387,-19.9999847206,clean_point_source
+jump-01,96.0,40.0,9.9989432075,-20.0007180524,jump_flag_overlap
+edge-01,1.0,96.0,10.0020322711,-19.9990069329,edge_and_do_not_use
+spike-01,80.0,100.0,9.9994634808,-19.9988847214,pixel_spike_no_jump_flag

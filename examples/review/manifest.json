@@ -1,0 +1,387 @@
+{
+  "analysis_settings": {
+    "annulus_inner_px": null,
+    "annulus_inner_px_effective": 12.0,
+    "annulus_outer_px": null,
+    "annulus_outer_px_effective": 24.0,
+    "aperture_radius_px": 12.0,
+    "background": "sigma_clip_median",
+    "background_sigma": 3.0,
+    "coordinate_tolerance_arcsec": 0.05,
+    "dq_policy": "exclude_do_not_use",
+    "min_background_pixels": 30,
+    "morphology_nsigma": 5.0,
+    "psf_adapter": "none",
+    "psf_sigma_px": null,
+    "strict": false
+  },
+  "candidate_ids": [
+    "clean-01",
+    "jump-01",
+    "edge-01",
+    "spike-01"
+  ],
+  "candidates": [
+    {
+      "background": 10.016925811767578,
+      "background_status": "MEASURED",
+      "candidate_id": "clean-01",
+      "central_flags": "",
+      "dec_deg": -19.9999847206,
+      "do_not_use_fraction": 0.0,
+      "href": "candidates/clean-01/review.html",
+      "isolated_pixel_heuristic": false,
+      "overall_review_status": "NO_FLAGGED_CONCERNS_IN_AVAILABLE_CHECKS",
+      "ra_deg": 10.0007641387,
+      "significance": 187.7917786271605,
+      "significance_status": "MEASURED",
+      "x": 40.0,
+      "y": 64.0
+    },
+    {
+      "background": 9.991944789886475,
+      "background_status": "MEASURED",
+      "candidate_id": "jump-01",
+      "central_flags": "JUMP_DET",
+      "dec_deg": -20.0007180524,
+      "do_not_use_fraction": 0.0,
+      "href": "candidates/jump-01/review.html",
+      "isolated_pixel_heuristic": false,
+      "overall_review_status": "REVIEW_RECOMMENDED",
+      "ra_deg": 9.9989432075,
+      "significance": 100.78692107220111,
+      "significance_status": "MEASURED",
+      "x": 96.0,
+      "y": 40.0
+    },
+    {
+      "background": 10.007894515991211,
+      "background_status": "MEASURED",
+      "candidate_id": "edge-01",
+      "central_flags": "DO_NOT_USE",
+      "dec_deg": -19.9990069329,
+      "do_not_use_fraction": 0.15234375,
+      "href": "candidates/edge-01/review.html",
+      "isolated_pixel_heuristic": false,
+      "overall_review_status": "REVIEW_RECOMMENDED",
+      "ra_deg": 10.0020322711,
+      "significance": 112.30777811545464,
+      "significance_status": "MEASURED",
+      "x": 1.0,
+      "y": 96.0
+    },
+    {
+      "background": 10.0,
+      "background_status": "MEASURED",
+      "candidate_id": "spike-01",
+      "central_flags": "",
+      "dec_deg": -19.9988847214,
+      "do_not_use_fraction": 0.0,
+      "href": "candidates/spike-01/review.html",
+      "isolated_pixel_heuristic": true,
+      "overall_review_status": "REVIEW_RECOMMENDED",
+      "ra_deg": 9.9994634808,
+      "significance": 499.9999925494195,
+      "significance_status": "MEASURED",
+      "x": 80.0,
+      "y": 100.0
+    }
+  ],
+  "command": "/tmp/ral-venv/bin/romanartifactlens analyze /workspace/examples/synthetic_image.npz --catalog /workspace/examples/candidates.csv --radius-px 12 --out /workspace/examples/review",
+  "coordinate_convention": "0-based pixel centers; x = column; y = row; array index is [y, x]. Sky conversions use the file WCS (astropy or gwcs) with that same 0-based origin.",
+  "created_utc": "2026-10-16T14:00:51+00:00",
+  "data_level": "SYNTHETIC",
+  "dataset_kind": "SYNTHETIC_TEST",
+  "dataset_meta": {
+    "calibration_software_name": null,
+    "calibration_software_version": null,
+    "detector": null,
+    "filename": null,
+    "model_type": null,
+    "optical_element": null,
+    "origin": null,
+    "roman_datamodels_version": null,
+    "schema_allowed_science_units": null,
+    "validation_note": null
+  },
+  "flag_definitions": {
+    "flags": [
+      {
+        "bit": 0,
+        "meaning": "Pipeline bit recommending that the pixel be left out of science measurements, including when it is combined with other bits. It does not name a single physical cause.",
+        "name": "DO_NOT_USE",
+        "policy": "EXCLUSION",
+        "value": 1
+      },
+      {
+        "bit": 1,
+        "meaning": "The exposure-level saturation step recorded saturation. Saturated pixels can distort shape and brightness. The flag does not classify the candidate.",
+        "name": "SATURATED",
+        "policy": "EXPOSURE_CONDITION",
+        "value": 2
+      },
+      {
+        "bit": 2,
+        "meaning": "Ramp fitting recorded a jump. Jumps are associated with cosmic-ray hits and with other discontinuities. A jump flag does not prove that this candidate is a cosmic ray.",
+        "name": "JUMP_DET",
+        "policy": "EXPOSURE_CONDITION",
+        "value": 4
+      },
+      {
+        "bit": 3,
+        "meaning": "Data were marked lost in transmission.",
+        "name": "DROPOUT",
+        "policy": "EXPOSURE_CONDITION",
+        "value": 8
+      },
+      {
+        "bit": 4,
+        "meaning": "The pixel lies in a region affected by the guide-window readout. The handbook notes that this condition is one of those that may also set DO_NOT_USE.",
+        "name": "GW_AFFECTED_DATA",
+        "policy": "EXPOSURE_CONDITION",
+        "value": 16
+      },
+      {
+        "bit": 5,
+        "meaning": "High persistence was flagged (this bit was previously reserved).",
+        "name": "PERSISTENCE",
+        "policy": "EXPOSURE_CONDITION",
+        "value": 32
+      },
+      {
+        "bit": 6,
+        "meaning": "The pixel was flagged as below the A/D floor.",
+        "name": "AD_FLOOR",
+        "policy": "EXPOSURE_CONDITION",
+        "value": 64
+      },
+      {
+        "bit": 7,
+        "meaning": "Pixel DQ bit 7: flagged by outlier detection. This is not the GROUPDQ WFI18_TRANSIENT bit.",
+        "name": "OUTLIER",
+        "policy": "EXPOSURE_CONDITION",
+        "value": 128
+      },
+      {
+        "bit": 8,
+        "meaning": "The quoted uncertainty was flagged as unreliable.",
+        "name": "UNRELIABLE_ERROR",
+        "policy": "RELIABILITY",
+        "value": 256
+      },
+      {
+        "bit": 9,
+        "meaning": "The pixel is not on the science portion of the detector.",
+        "name": "NON_SCIENCE",
+        "policy": "GEOMETRIC",
+        "value": 512
+      },
+      {
+        "bit": 10,
+        "meaning": "Reference data marked the pixel dead.",
+        "name": "DEAD",
+        "policy": "DETECTOR_REFERENCE",
+        "value": 1024
+      },
+      {
+        "bit": 11,
+        "meaning": "Reference data marked the pixel hot.",
+        "name": "HOT",
+        "policy": "DETECTOR_REFERENCE",
+        "value": 2048
+      },
+      {
+        "bit": 12,
+        "meaning": "Reference data marked the pixel warm.",
+        "name": "WARM",
+        "policy": "DETECTOR_REFERENCE",
+        "value": 4096
+      },
+      {
+        "bit": 13,
+        "meaning": "Reference data marked the pixel as low quantum efficiency.",
+        "name": "LOW_QE",
+        "policy": "DETECTOR_REFERENCE",
+        "value": 8192
+      },
+      {
+        "bit": 15,
+        "meaning": "Reference data marked the pixel as a telegraph pixel.",
+        "name": "TELEGRAPH",
+        "policy": "DETECTOR_REFERENCE",
+        "value": 32768
+      },
+      {
+        "bit": 16,
+        "meaning": "The pixel was marked highly nonlinear.",
+        "name": "NONLINEAR",
+        "policy": "DETECTOR_REFERENCE",
+        "value": 65536
+      },
+      {
+        "bit": 17,
+        "meaning": "A reference pixel was marked unusable.",
+        "name": "BAD_REF_PIXEL",
+        "policy": "DETECTOR_REFERENCE",
+        "value": 131072
+      },
+      {
+        "bit": 18,
+        "meaning": "A flat field could not be measured.",
+        "name": "NO_FLAT_FIELD",
+        "policy": "DETECTOR_REFERENCE",
+        "value": 262144
+      },
+      {
+        "bit": 19,
+        "meaning": "A gain could not be measured.",
+        "name": "NO_GAIN_VALUE",
+        "policy": "DETECTOR_REFERENCE",
+        "value": 524288
+      },
+      {
+        "bit": 20,
+        "meaning": "A linearity correction was not available.",
+        "name": "NO_LIN_CORR",
+        "policy": "DETECTOR_REFERENCE",
+        "value": 1048576
+      },
+      {
+        "bit": 21,
+        "meaning": "A saturation check was not available.",
+        "name": "NO_SAT_CHECK",
+        "policy": "DETECTOR_REFERENCE",
+        "value": 2097152
+      },
+      {
+        "bit": 22,
+        "meaning": "Bias variance was marked large.",
+        "name": "UNRELIABLE_BIAS",
+        "policy": "RELIABILITY",
+        "value": 4194304
+      },
+      {
+        "bit": 23,
+        "meaning": "Dark variance was marked large.",
+        "name": "UNRELIABLE_DARK",
+        "policy": "RELIABILITY",
+        "value": 8388608
+      },
+      {
+        "bit": 24,
+        "meaning": "Slope variance was marked large.",
+        "name": "UNRELIABLE_SLOPE",
+        "policy": "RELIABILITY",
+        "value": 16777216
+      },
+      {
+        "bit": 25,
+        "meaning": "Flat variance was marked large.",
+        "name": "UNRELIABLE_FLAT",
+        "policy": "RELIABILITY",
+        "value": 33554432
+      },
+      {
+        "bit": 26,
+        "meaning": "Reserved bit. No scientific meaning is assigned.",
+        "name": "RESERVED_5",
+        "policy": "RESERVED",
+        "value": 67108864
+      },
+      {
+        "bit": 27,
+        "meaning": "Reserved bit. No scientific meaning is assigned.",
+        "name": "RESERVED_6",
+        "policy": "RESERVED",
+        "value": 134217728
+      },
+      {
+        "bit": 28,
+        "meaning": "The pixel was marked sensitive to the reset anomaly.",
+        "name": "UNRELIABLE_RESET",
+        "policy": "RELIABILITY",
+        "value": 268435456
+      },
+      {
+        "bit": 29,
+        "meaning": "Reserved bit. No scientific meaning is assigned.",
+        "name": "RESERVED_7",
+        "policy": "RESERVED",
+        "value": 536870912
+      },
+      {
+        "bit": 30,
+        "meaning": "Catch-all bad-pixel bit. The specific cause is not in the flag name.",
+        "name": "OTHER_BAD_PIXEL",
+        "policy": "DETECTOR_REFERENCE",
+        "value": 1073741824
+      },
+      {
+        "bit": 31,
+        "meaning": "The pixel is a reference pixel.",
+        "name": "REFERENCE_PIXEL",
+        "policy": "GEOMETRIC",
+        "value": 2147483648
+      }
+    ],
+    "notes": [
+      "Documented snapshot of roman_datamodels.dqflags.pixel from version 1.2.0, cross-checked with the romancal reference-file DQ table. Bit 14 is unassigned. RC, inverse-RC, and open-pixel families described in the Roman DQ handbook are not separate names in this enum.",
+      "Named flags were read from roman_datamodels.dqflags.pixel at runtime."
+    ],
+    "package_version": "1.2.0",
+    "snapshot_id": "roman_datamodels-1.2.0-pixel-dq-2026-10-16",
+    "snapshot_matches_installed": true,
+    "source": "roman_datamodels.dqflags.pixel"
+  },
+  "inputs": [
+    {
+      "bytes": 55445,
+      "name": "synthetic_image.npz",
+      "path": "/workspace/examples/synthetic_image.npz",
+      "sha256": "f3a218cd94dc2039fd5c62f7dedc5681425301d0ca1e8166cbba41c06465869c"
+    },
+    {
+      "bytes": 313,
+      "name": "candidates.csv",
+      "path": "/workspace/examples/candidates.csv",
+      "sha256": "aadbaf07e5ef948465d296776b71a1ced02487fe9c4d01aef30a00ea619c8389"
+    },
+    {
+      "bytes": 132,
+      "name": "run.json",
+      "path": "/workspace/examples/run.json",
+      "sha256": "521d4b92cb208e6786b8cf8fdd27972c7c2b41f4ae0ef2db30833f36c7ee477d"
+    }
+  ],
+  "limitations": [
+    "SYNTHETIC_TEST. Input arrays are a labelled fixture, not a Roman observation.",
+    "v0.1 does not compare multiple exposures and does not join an L3 context map to L2 inputs.",
+    "Units come from the synthetic file. They are not Roman-calibrated units."
+  ],
+  "reference_model": {
+    "note": "A synthetic Gaussian is never recorded as a Roman PSF.",
+    "psf_adapter": "none",
+    "roman_calibrated_psf": false
+  },
+  "roman_validation": "not_applicable_synthetic_test",
+  "schema_version": "1.0.0",
+  "seed": 20261016,
+  "software": {
+    "asdf": "5.4.0",
+    "astropy": "8.0.2",
+    "gwcs": "1.0.3",
+    "matplotlib": "3.11.2",
+    "numpy": "2.5.4",
+    "photutils": "3.1.0",
+    "platform": "Linux-6.12.94+-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "roman_datamodels": "1.2.0",
+    "romanartifactlens": "0.1.0",
+    "romancal": null,
+    "romanisim": null,
+    "scipy": "1.18.1",
+    "stpsf": null
+  },
+  "units": "synthetic_counts",
+  "units_note": "Units come from the synthetic file. They are not Roman-calibrated units."
+}

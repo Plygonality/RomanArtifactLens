@@ -1,0 +1,5 @@
+label,x_centroid,y_centroid,area,snr,anomaly_score,anomaly_percentile,ra,dec,known,reference_id
+clean-01,40.0,64.0,10,8.0,0.05,50,10.0007641387,-19.9999847206,fixture,synthetic-0
+jump-01,96.0,40.0,11,8.0,0.42,51,9.9989432075,-20.0007180524,fixture,synthetic-1
+edge-01,1.0,96.0,12,8.0,0.2,52,10.0020322711,-19.9990069329,fixture,synthetic-2
+spike-01,80.0,100.0,13,8.0,0.93,53,9.9994634808,-19.9988847214,fixture,synthetic-3

@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+build/
+dist/
+*.egg-info/
+# Generated analysis output at the repository root only. A bare `reports/`
+# pattern also ignores the package at src/romanartifactlens/reports/.
+/reports/
+*.asdf
+.DS_Store
